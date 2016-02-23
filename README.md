@@ -1,31 +1,91 @@
-# ember-cli-slick-carousel
-[![Code Climate](https://codeclimate.com/github/igorpreston/ember-cli-slick-carousel/badges/gpa.svg)](https://codeclimate.com/github/igorpreston/ember-cli-slick-carousel)
+# ember-cli-slick
 
-This addon is drop-in and ready-to-use solution for integrating [Slick.js](http://kenwheeler.github.io/slick/) carousel into your Ember app. All features of the carousel are supported.
+`ember-cli-slick` is a component that wraps the Slick Slider plugin functionality.
+
+### Installation
+
+From inside your ember-cli project, run the following:
+
+```bash
+ember install ember-cli-slick
+```
+
+#### Installation for ember-cli 0.1.5 - 0.2.2
+
+```bash
+ember install:addon ember-cli-slick
+```
+
+### slick-slider
+
+```hbs
+{{#slick-slider autoplay=true arrows=false}}
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+{{/slick-slider}}
+```
+
+### The Slick events will be send from the component to your controller or route
+(the swipe event will send a `swiped` in order to prevent naming issues)
+
+```hbs
+{{#slick-slider	afterChange='afterChange'}}
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+{{/slick-slider}}
+```
+
+### The responsive configuration needs to be passed by a controller property
+
+```hbs
+{{#slick-slider	responsive=breakpoints}}
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+  <div class="box"> <img src="https://static2.businessinsider.com/image/4f3433986bb3f7b67a00003c/a-parasite-found-in-cats-could-be-manipulating-our-brains.jpg"> </div>
+{{/slick-slider}}
+```
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
+	breakpoints: [
+		{
+		  'breakpoint': 1024,
+		  'settings': {
+		    'slidesToShow': 3,
+		    'slidesToScroll': 3,
+		    'infinite': true
+		  }
+		},
+		{
+		  'breakpoint': 600,
+		  'settings': {
+		    'slidesToShow': 2,
+		    'slidesToScroll': 2
+		  }
+		},
+		{
+		  'breakpoint': 480,
+		  'settings': {
+		    'slidesToShow': 1,
+		    'slidesToScroll': 1
+		  }
+		}
+	]
+});
+```
 
 ## Installation
 
-```
-ember install ember-cli-slick-carousel
-```
-
-## How-to-use
-```
-{{#slick-carousel
-  class="ember-carousel"
-  autoplay=true
-  autoplaySpeed=2000
-  slidesToShow=1
-  slidesToScroll=1
-  dots=true
-  fade=true}}
-  <div><img src="http://placehold.it/300?text=Slide+1"></div>
-  <div><img src="http://placehold.it/300?text=Slide+2"></div>
-  <div><img src="http://placehold.it/300?text=Slide+3"></div>
-{{/slick-carousel}}
-```
-Look up [Slick settings attributes](https://github.com/kenwheeler/slick) to customize component behavior.
-Also, do not forget to customize slider with CSS as you like.
+* `git clone` this repository
+* `npm install`
+* `bower install`
 
 ## Running
 
